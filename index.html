@@ -194,6 +194,22 @@
 	</div>
 
 	<script>
+
+		document.addEventListener("DOMContentLoaded", () => {
+    const video = document.getElementById("background-video");
+
+    // Try playing video immediately
+    video.play().catch(() => {
+        console.log("Autoplay blocked. Waiting for user interaction...");
+    });
+
+    // Ensure video plays after user interaction
+    document.body.addEventListener("click", () => {
+        video.play();
+    }, { once: true }); // Runs only once to avoid unnecessary calls
+});
+
+		
 		const startScreen = document.getElementById("start-screen");
 		const startButton = document.getElementById("start-button");
 		const mainContent = document.getElementById("main-content");
