@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Auto Play Music with Video Background</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			background: black;
+		}
+
+		/* Start Screen */
+		#start-screen {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background: black;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			text-align: center;
+			color: white;
+		}
+
+		#start-button {
+			background: orange;
+			color: white;
+			font-size: 20px;
+			padding: 15px 30px;
+			border: none;
+			cursor: pointer;
+			border-radius: 10px;
+			margin-top: 20px;
+			transition: 0.3s;
+		}
+
+		#start-button:hover {
+			transform: scale(1.1);
+		}
+
+		/* Hide content initially */
+		#main-content {
+			display: none;
+			width: 100%;
+			height: 100%;
+		}
+
+		/* Video Background */
+		#background-video {
+			position: fixed;
+			right: 0;
+			bottom: 0;
+			min-width: 100%;
+			min-height: 100%;
+			width: auto;
+			height: auto;
+			z-index: -1;
+			object-fit: cover;
+		}
+
+		/* Music Controls */
+		.music-controls {
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			background: rgba(255, 255, 255, 0.1);
+			backdrop-filter: blur(10px);
+			padding: 10px;
+			border-radius: 10px;
+		}
+
+		.music-controls button {
+			background: orange;
+			color: white;
+			border: none;
+			padding: 10px 15px;
+			cursor: pointer;
+			font-size: 16px;
+			margin-bottom: 10px;
+			border-radius: 5px;
+		}
+
+		.music-controls input {
+			width: 150px;
+		}
+
+		/* Profile Card */
+		.profile-card {
+			width: 400px;
+			padding: 20px;
+			border-radius: 20px;
+			background: rgba(255, 255, 255, 0.1);
+			backdrop-filter: blur(10px);
+			text-align: center;
+			color: white;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		.profile-image {
+			width: 75px;
+			height: 80px;
+			border-radius: 50%;
+			border: 3px solid white;
+			margin-bottom: 10px;
+		}
+
+		.username {
+			font-size: 24px;
+			font-weight: bold;
+			color: orange;
+		}
+
+		.status {
+			font-size: 14px;
+			margin-bottom: 15px;
+		}
+
+		.social-icons {
+			display: flex;
+			justify-content: center;
+			gap: 15px;
+			margin-top: 15px;
+		}
+
+		.social-icons img {
+			width: 30px;
+			height: 30px;
+			cursor: pointer;
+			transition: 0.3s;
+		}
+
+		.social-icons img:hover {
+			transform: scale(1.1);
+		}
+	</style>
+</head>
+
+<body>
+
+	<!-- Start Screen -->
+	<div id="start-screen">
+		<h1>Welcome to Addy's Site</h1>
+		<button id="start-button">Start</button>
+	</div>
+
+	<!-- Main Content (Hidden Initially) -->
+	<div id="main-content">
+		<!-- Background Music -->
+		<audio id="my_audio" src="./sample.mp3" loop></audio>
+
+		<!-- Music Controls -->
+		<div class="music-controls">
+			<button id="playButton">Play Music</button>
+			<input type="range" id="volume" min="0" max="1" step="0.01" value="1">
+		</div>
+
+		<!-- Profile Card -->
+		<div class="profile-card">
+			<img src="addy.png" alt="Profile Logo" class="profile-image">
+			<div class="username">Addy</div>
+			<div class="status">addyisaddorable</div>
+
+			<div class="social-icons">
+				<a href="mailto:ohaddymadethis@gmail.com"><img src="email.png" alt="Email"></a>
+				<a href="https://www.instagram.com/addymadethis/"><img src="instagram.png" alt="Instagram"></a>
+				<a href="https://www.tiktok.com/@addymadethis"><img src="tiktok.png" alt="Tiktok"></a>
+			</div>
+		</div>
+
+		<!-- Background Video -->
+		<video id="background-video" autoplay muted loop>
+			<source src="./sample.mp4" type="video/mp4">
+			Your browser does not support the video tag.
+		</video>
+	</div>
+
+	<script>
+		const startScreen = document.getElementById("start-screen");
+		const startButton = document.getElementById("start-button");
+		const mainContent = document.getElementById("main-content");
+		const audio = document.getElementById("my_audio");
+		const playButton = document.getElementById("playButton");
+		const volumeSlider = document.getElementById("volume");
+
+		// Show content when "Start" button is clicked
+		startButton.addEventListener("click", function () {
+			startScreen.style.display = "none"; // Hide start screen
+			mainContent.style.display = "block"; // Show main content
+			audio.play(); // Start playing music
+		});
+
+		// Play/Pause button
+		playButton.addEventListener("click", function () {
+			if (audio.paused) {
+				audio.play();
+				playButton.textContent = "Pause Music";
+			} else {
+				audio.pause();
+				playButton.textContent = "Play Music";
+			}
+		});
+
+		// Volume control
+		volumeSlider.addEventListener("input", function () {
+			audio.volume = volumeSlider.value;
+		});
+	</script>
+
+</body>
+
+</html>
