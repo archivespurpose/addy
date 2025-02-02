@@ -153,47 +153,7 @@
 		}
 	</style>
 </head>
-
-<body>
-
-	<!-- Start Screen -->
-	<div id="start-screen">
-		<h1>Welcome to Addy's Site</h1>
-		<button id="start-button">Start</button>
-	</div>
-
-	<!-- Main Content (Hidden Initially) -->
-	<div id="main-content">
-		<!-- Background Music -->
-		<audio id="my_audio" src="./sample.mp3" loop></audio>
-
-		<!-- Music Controls -->
-		<div class="music-controls">
-			<button id="playButton">Play Music</button>
-			<input type="range" id="volume" min="0" max="1" step="0.01" value="1">
-		</div>
-
-		<!-- Profile Card -->
-		<div class="profile-card">
-			<img src="addy.png" alt="Profile Logo" class="profile-image">
-			<div class="username">Addy</div>
-			<div class="status">addyisaddorable</div>
-
-			<div class="social-icons">
-				<a href="mailto:ohaddymadethis@gmail.com"><img src="email.png" alt="Email"></a>
-				<a href="https://www.instagram.com/addymadethis/"><img src="instagram.png" alt="Instagram"></a>
-				<a href="https://www.tiktok.com/@addymadethis"><img src="tiktok.png" alt="Tiktok"></a>
-			</div>
-		</div>
-
-		<!-- Background Video -->
-		<video id="background-video" autoplay muted loop playsinline>
-			<source src="./sample.mp4" type="video/mp4">
-			Your browser does not support the video tag.
-		</video>
-	</div>
-
-	<script>
+<script>
 
 		document.addEventListener("DOMContentLoaded", () => {
     const video = document.getElementById("background-video");
@@ -240,6 +200,46 @@
 			audio.volume = volumeSlider.value;
 		});
 	</script>
+<body>
+
+	<!-- Start Screen -->
+	<div id="start-screen">
+		<h1>Welcome to Addy's Site</h1>
+		<button id="start-button">Start</button>
+	</div>
+
+	<!-- Main Content (Hidden Initially) -->
+	<div id="main-content">
+		<!-- Background Music -->
+		<audio id="my_audio" src="./sample.mp3" loop></audio>
+
+		<!-- Music Controls -->
+		<div class="music-controls">
+			<button id="playButton">Play Music</button>
+			<input type="range" id="volume" min="0" max="1" step="0.01" value="1">
+		</div>
+
+		<!-- Profile Card -->
+		<div class="profile-card">
+			<img src="addy.png" alt="Profile Logo" class="profile-image">
+			<div class="username">Addy</div>
+			<div class="status">addyisaddorable</div>
+
+			<div class="social-icons">
+				<a href="mailto:ohaddymadethis@gmail.com"><img src="email.png" alt="Email"></a>
+				<a href="https://www.instagram.com/addymadethis/"><img src="instagram.png" alt="Instagram"></a>
+				<a href="https://www.tiktok.com/@addymadethis"><img src="tiktok.png" alt="Tiktok"></a>
+			</div>
+		</div>
+
+		<!-- Background Video -->
+		<video id="background-video" autoplay muted loop playsinline>
+			<source src="./sample.mp4" type="video/mp4">
+			Your browser does not support the video tag.
+		</video>
+	</div>
+
+	
 
 </body>
 
